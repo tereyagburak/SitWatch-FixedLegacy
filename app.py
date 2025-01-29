@@ -536,24 +536,7 @@ def create_thumbnail(video_path, output_path):
         return False
 
 
-def create_thumbnail(video_path, output_path):
-    """Video'dan thumbnail oluştur"""
-    try:
-        clip = VideoFileClip(video_path)
 
-        frame_time = min(1.0, clip.duration)
-        frame = clip.get_frame(frame_time)
-
-        img = Image.fromarray(frame)
-
-        target_width = 1280
-        target_height = 720
-        img = img.resize((target_width, target_height), Image.LANCZOS)
-
-        img.save(output_path, 'JPEG', quality=85, optimize=True)
-
-        clip.close()
-        return True
 
     except Exception as e:
         print(f"Thumbnail oluşturma hatası: {str(e)}")
